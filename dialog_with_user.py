@@ -16,20 +16,18 @@ class DialogWithUser:
     @staticmethod
     def _parse_text_to_command(command_as_text):
         command_as_text = command_as_text.lower()
-        if command_as_text in ['стоп', 'stop']:
-            return CommandType.STOP
-        elif command_as_text == 'узнать статус пациента':
-            return CommandType.GET_STATUS
-        elif command_as_text == 'повысить статус пациента':
-            return CommandType.STATUS_UP
-        elif command_as_text == 'понизить статус пациента':
-            return CommandType.STATUS_DOWN
-        elif command_as_text == 'выписать пациента':
-            return CommandType.DISCHARGE
-        elif command_as_text == 'рассчитать статистику':
-            return CommandType.CALCULATE_STATISTICS
-        else:
-            return CommandType.UNKNOWN
+        mapping_phrases_to_command_type = [
+            (['стоп', 'stop'], CommandType.STOP),
+            (['узнать статус пациента', 'get status'], CommandType.GET_STATUS),
+            (['повысить статус пациента', 'status up'], CommandType.STATUS_UP),
+            (['понизить статус пациента', 'status down'], CommandType.STATUS_DOWN),
+            (['выписать пациента', 'discharge'], CommandType.DISCHARGE),
+            (['рассчитать статистику', 'calculate statistics'], CommandType.CALCULATE_STATISTICS)
+        ]
+        for phrases, command_type in mapping_phrases_to_command_type:
+            if command_as_text in phrases:
+                return command_type
+        return CommandType.UNKNOWN
 
     def request_patient_id(self):
         try:
