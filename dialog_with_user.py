@@ -24,6 +24,8 @@ class DialogWithUser:
             return CommandType.STATUS_UP
         elif command_as_text == 'понизить статус пациента':
             return CommandType.STATUS_DOWN
+        elif command_as_text == 'выписать пациента':
+            return CommandType.DISCHARGE
         elif command_as_text == 'рассчитать статистику':
             return CommandType.CALCULATE_STATISTICS
         else:

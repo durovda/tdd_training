@@ -183,6 +183,44 @@ def test_status_down_when_min_status_cannot_down():
                                                           '(наши пациенты не умирают)')
 
 
+def test_discharge():
+    cmd = make_commands()
+    cmd._dialog_with_user.request_patient_id = MagicMock(return_value=77)
+    cmd._hospital.discharge_patient = MagicMock()
+    cmd._dialog_with_user.send_message = MagicMock()
+
+    cmd.discharge()
+
+    cmd._dialog_with_user.request_patient_id.assert_called_with()
+    cmd._hospital.discharge_patient.assert_called_with(77)
+    cmd._dialog_with_user.send_message.assert_called_with('Пациент выписан из больницы')
+
+
+def test_discharge_when_patient_id_not_integer():
+    cmd = make_commands()
+    cmd._dialog_with_user.request_patient_id = MagicMock(side_effect=PatientIdNotIntegerError)
+    cmd._dialog_with_user.send_message = MagicMock()
+
+    cmd.discharge()
+
+    cmd._dialog_with_user.request_patient_id.assert_called_with()
+    cmd._dialog_with_user.send_message.assert_called_with('Ошибка ввода. '
+                                                          'ID пациента должно быть числом (целым, положительным)')
+
+
+def test_discharge_when_patient_not_exists():
+    cmd = make_commands()
+    cmd._dialog_with_user.request_patient_id = MagicMock(return_value=999)
+    cmd._hospital.discharge_patient = MagicMock(side_effect=PatientNotExistsError)
+    cmd._dialog_with_user.send_message = MagicMock()
+
+    cmd.discharge()
+
+    cmd._dialog_with_user.request_patient_id.assert_called_with()
+    cmd._hospital.discharge_patient.assert_called_with(999)
+    cmd._dialog_with_user.send_message.assert_called_with('Ошибка. В больнице нет пациента с таким ID')
+
+
 def test_calculate_statistics():
     cmd = make_commands()
     cmd._hospital.get_statistics = MagicMock(return_value={"Тяжело болен": 1, "Болен": 3, "Готов к выписке": 2})

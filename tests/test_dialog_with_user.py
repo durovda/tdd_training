@@ -30,6 +30,7 @@ fixture_for_parser = [('стоп', CommandType.STOP),
                       ('узнать статус пациента', CommandType.GET_STATUS),
                       ('повысить статус пациента', CommandType.STATUS_UP),
                       ('понизить статус пациента', CommandType.STATUS_DOWN),
+                      ('выписать пациента', CommandType.DISCHARGE),
                       ('рассчитать статистику', CommandType.CALCULATE_STATISTICS)
                       ]
 
