@@ -15,7 +15,7 @@ class Hospital:
 
     def patient_status_up(self, patient_id):
         self._verify_patient_exists(patient_id)
-        if self.cannot_status_up_for_this_patient(patient_id):
+        if not self.can_status_up_for_this_patient(patient_id):
             raise MaxStatusCannotUpError
         patient_index = patient_id - 1
         status_code = self._patients_db[patient_index]
@@ -23,7 +23,7 @@ class Hospital:
 
     def patient_status_down(self, patient_id):
         self._verify_patient_exists(patient_id)
-        if self.cannot_status_down_for_this_patient(patient_id):
+        if not self.can_status_down_for_this_patient(patient_id):
             raise MinStatusCannotDownError
         patient_index = patient_id - 1
         status_code = self._patients_db[patient_index]
@@ -52,10 +52,10 @@ class Hospital:
         if not self.patient_exists(patient_id):
             raise PatientNotExistsError
 
-    def cannot_status_up_for_this_patient(self, patient_id):
+    def can_status_up_for_this_patient(self, patient_id):
         status = self.get_patient_status_by_id(patient_id)
-        return status == "Готов к выписке"
+        return status != "Готов к выписке"
 
-    def cannot_status_down_for_this_patient(self, patient_id):
+    def can_status_down_for_this_patient(self, patient_id):
         status = self.get_patient_status_by_id(patient_id)
-        return status == "Тяжело болен"
+        return status != "Тяжело болен"

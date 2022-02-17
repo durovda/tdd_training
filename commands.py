@@ -21,17 +21,17 @@ class Commands:
     def status_up(self):
         try:
             patient_id = self._dialog_with_user.request_patient_id()
-            if self._hospital.cannot_status_up_for_this_patient(patient_id):
+            if self._hospital.can_status_up_for_this_patient(patient_id):
+                self._hospital.patient_status_up(patient_id)
+                new_status = self._hospital.get_patient_status_by_id(patient_id)
+                self._dialog_with_user.send_message(f'Новый статус пациента: "{new_status}"')
+            else:
                 discharge_confirmation = self._dialog_with_user.request_patient_discharge_confirmation()
                 if discharge_confirmation:
                     self._hospital.discharge_patient(patient_id)
                     self._dialog_with_user.send_message('Пациент выписан из больницы')
                 else:
                     self._dialog_with_user.send_message('Пациент остался в статусе "Готов к выписке"')
-            else:
-                self._hospital.patient_status_up(patient_id)
-                new_status = self._hospital.get_patient_status_by_id(patient_id)
-                self._dialog_with_user.send_message(f'Новый статус пациента: "{new_status}"')
         except (PatientIdNotIntegerError, PatientNotExistsError) as err:
             self._dialog_with_user.send_message(str(err))
 

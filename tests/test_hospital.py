@@ -32,22 +32,22 @@ def test_patient_status_up_when_patient_not_exists():
 
 def test_can_status_up_for_this_patient():
     hospital = Hospital([1])
-    assert not hospital.cannot_status_up_for_this_patient(1)
+    assert hospital.can_status_up_for_this_patient(1)
 
 
 def test_cannot_status_up_for_this_patient():
     hospital = Hospital([3])
-    assert hospital.cannot_status_up_for_this_patient(1)
+    assert not hospital.can_status_up_for_this_patient(1)
 
 
 def test_can_status_down_for_this_patient():
     hospital = Hospital([1])
-    assert not hospital.cannot_status_down_for_this_patient(1)
+    assert hospital.can_status_down_for_this_patient(1)
 
 
 def test_cannot_status_down_for_this_patient():
     hospital = Hospital([0])
-    assert hospital.cannot_status_down_for_this_patient(1)
+    assert not hospital.can_status_down_for_this_patient(1)
 
 
 def test_patient_status_up_when_max_status_cannot_up():
