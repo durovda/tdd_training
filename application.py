@@ -1,4 +1,4 @@
-from tdd_trening.hospital_dda.command_type import CommandType
+from command_type import CommandType
 
 
 class Application:

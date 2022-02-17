@@ -1,5 +1,5 @@
-from tdd_trening.hospital_dda.exceptions import MinStatusCannotDownError, MaxStatusCannotUpError
-from tdd_trening.hospital_dda.exceptions import PatientNotExistsError
+from exceptions import MinStatusCannotDownError, MaxStatusCannotUpError
+from exceptions import PatientNotExistsError
 
 
 class Hospital:

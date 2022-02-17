@@ -1,5 +1,5 @@
-from tdd_trening.hospital_dda.command_type import CommandType
-from tdd_trening.hospital_dda.exceptions import PatientIdNotIntegerError
+from command_type import CommandType
+from exceptions import PatientIdNotIntegerError
 
 
 class DialogWithUser:

@@ -1,10 +1,10 @@
 from unittest.mock import MagicMock
 
-from tdd_trening.hospital_dda.commands import Commands
-from tdd_trening.hospital_dda.exceptions import PatientIdNotIntegerError, MinStatusCannotDownError, \
+from commands import Commands
+from exceptions import PatientIdNotIntegerError, MinStatusCannotDownError, \
     PatientNotExistsError
-from tdd_trening.hospital_dda.hospital import Hospital
-from tdd_trening.hospital_dda.spesial_asserts import assert_lists_equal
+from hospital import Hospital
+from spesial_asserts import assert_lists_equal
 
 
 def raise_id_not_integer_error():

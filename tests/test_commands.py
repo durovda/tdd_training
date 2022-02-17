@@ -1,8 +1,7 @@
 from unittest.mock import MagicMock
 
-from tdd_trening.hospital_dda.commands import Commands
-from tdd_trening.hospital_dda.exceptions import PatientIdNotIntegerError, PatientNotExistsError, \
-    MinStatusCannotDownError
+from commands import Commands
+from exceptions import PatientIdNotIntegerError, PatientNotExistsError, MinStatusCannotDownError
 
 
 def make_commands():

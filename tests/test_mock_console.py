@@ -1,6 +1,6 @@
 import pytest
 
-from tdd_trening.hospital_dda.mock_console import MockConsole
+from mock_console import MockConsole
 
 
 def test_input():

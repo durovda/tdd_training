@@ -1,8 +1,8 @@
-from tdd_trening.hospital_dda.application import Application
-from tdd_trening.hospital_dda.commands import Commands
-from tdd_trening.hospital_dda.console import Console
-from tdd_trening.hospital_dda.dialog_with_user import DialogWithUser
-from tdd_trening.hospital_dda.hospital import Hospital
+from application import Application
+from commands import Commands
+from console import Console
+from dialog_with_user import DialogWithUser
+from hospital import Hospital
 
 if __name__ == "__main__":
     hospital = Hospital([1 for x in range(200)])

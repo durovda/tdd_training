@@ -1,4 +1,4 @@
-from tdd_trening.hospital_dda.console import Console
+from console import Console
 
 if __name__ == "__main__":
     input_stream = Console()

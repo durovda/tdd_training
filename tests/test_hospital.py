@@ -1,8 +1,8 @@
 import pytest
 
-from tdd_trening.hospital_dda.exceptions import MinStatusCannotDownError, MaxStatusCannotUpError
-from tdd_trening.hospital_dda.hospital import Hospital
-from tdd_trening.hospital_dda.exceptions import PatientNotExistsError
+from exceptions import MinStatusCannotDownError, MaxStatusCannotUpError
+from hospital import Hospital
+from exceptions import PatientNotExistsError
 
 
 def test_get_patient_status():

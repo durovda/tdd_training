@@ -1,4 +1,4 @@
-from tdd_trening.hospital_dda.exceptions import PatientIdNotIntegerError, PatientNotExistsError, \
+from exceptions import PatientIdNotIntegerError, PatientNotExistsError, \
     MinStatusCannotDownError
 
 

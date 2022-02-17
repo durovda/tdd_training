@@ -1,8 +1,8 @@
-from tdd_trening.hospital_dda.application import Application
-from tdd_trening.hospital_dda.commands import Commands
-from tdd_trening.hospital_dda.dialog_with_user import DialogWithUser
-from tdd_trening.hospital_dda.hospital import Hospital
-from tdd_trening.hospital_dda.mock_console import MockConsole
+from application import Application
+from commands import Commands
+from dialog_with_user import DialogWithUser
+from hospital import Hospital
+from mock_console import MockConsole
 
 
 def make_application(hospital, console):
