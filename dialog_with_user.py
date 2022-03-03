@@ -21,7 +21,6 @@ class DialogWithUser:
             (['узнать статус пациента', 'get status'], CommandType.GET_STATUS),
             (['повысить статус пациента', 'status up'], CommandType.STATUS_UP),
             (['понизить статус пациента', 'status down'], CommandType.STATUS_DOWN),
-            (['выписать пациента', 'discharge'], CommandType.DISCHARGE),
             (['рассчитать статистику', 'calculate statistics'], CommandType.CALCULATE_STATISTICS)
         ]
         for phrases, command_type in mapping_phrases_to_command_type:

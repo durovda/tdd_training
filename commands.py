@@ -50,11 +50,3 @@ class Commands:
         for status in statistics:
             result_message += f'\n - в статусе "{status}": {statistics[status]} чел.'
         self._dialog_with_user.send_message(result_message)
-
-    def discharge(self):
-        try:
-            patient_id = self._dialog_with_user.request_patient_id()
-            self._hospital.discharge_patient(patient_id)
-            self._dialog_with_user.send_message('Пациент выписан из больницы')
-        except (PatientIdNotIntegerError, PatientNotExistsError, MinStatusCannotDownError) as err:
-            self._dialog_with_user.send_message(str(err))

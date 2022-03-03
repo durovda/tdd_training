@@ -16,8 +16,6 @@ class Application:
                 self._commands.status_up()
             elif command == CommandType.STATUS_DOWN:
                 self._commands.status_down()
-            elif command == CommandType.DISCHARGE:
-                self._commands.discharge()
             elif command == CommandType.CALCULATE_STATISTICS:
                 self._commands.calculate_statistics()
             elif command == CommandType.STOP:
