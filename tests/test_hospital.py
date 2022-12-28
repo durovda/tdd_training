@@ -1,8 +1,8 @@
 import pytest
 
-from exceptions import MinStatusCannotDownError, MaxStatusCannotUpError
+from custom_exceptions import MinStatusCannotDownError, MaxStatusCannotUpError
 from hospital import Hospital
-from exceptions import PatientNotExistsError
+from custom_exceptions import PatientNotExistsError
 
 
 def test_get_patient_status():
@@ -32,22 +32,22 @@ def test_patient_status_up_when_patient_not_exists():
 
 def test_can_status_up_for_this_patient():
     hospital = Hospital([1])
-    assert hospital.can_status_up_for_this_patient(1)
+    assert hospital.can_patient_status_up(1)
 
 
 def test_cannot_status_up_for_this_patient():
     hospital = Hospital([3])
-    assert not hospital.can_status_up_for_this_patient(1)
+    assert not hospital.can_patient_status_up(1)
 
 
 def test_can_status_down_for_this_patient():
     hospital = Hospital([1])
-    assert hospital.can_status_down_for_this_patient(1)
+    assert hospital.can_patient_status_down(1)
 
 
 def test_cannot_status_down_for_this_patient():
     hospital = Hospital([0])
-    assert not hospital.can_status_down_for_this_patient(1)
+    assert not hospital.can_patient_status_down(1)
 
 
 def test_patient_status_up_when_max_status_cannot_up():
@@ -81,14 +81,14 @@ def test_patient_status_down_when_min_status_cannot_down():
 
 def test_discharge_patient():
     hospital = Hospital([1, 3, 1])
-    hospital.discharge_patient(2)
+    hospital.patient_discharge(2)
     assert hospital._patients_db == [1, 1]
 
 
 def test_discharge_patient_when_patient_not_exists():
     hospital = Hospital([3])
     with pytest.raises(PatientNotExistsError) as err:
-        hospital.discharge_patient(2)
+        hospital.patient_discharge(2)
     assert str(err.value) == 'Ошибка. В больнице нет пациента с таким ID'
 
 

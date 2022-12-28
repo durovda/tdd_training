@@ -1,5 +1,5 @@
 from command_type import CommandType
-from exceptions import PatientIdNotIntegerError
+from custom_exceptions import PatientIdNotIntegerAndPositiveError
 
 
 class DialogWithUser:
@@ -32,10 +32,13 @@ class DialogWithUser:
     def request_patient_id(self):
         try:
             id_as_text = self._console.input('Введите ID пациента: ')
-            return int(id_as_text)
+            patient_id = int(id_as_text)
+            if patient_id < 0:
+                raise ValueError
+            return patient_id
         except ValueError:
-            raise PatientIdNotIntegerError
+            raise PatientIdNotIntegerAndPositiveError
 
-    def request_patient_discharge_confirmation(self):
+    def request_confirmation_of_patient_discharge(self):
         confirmation_text = self._console.input('Желаете этого клиента выписать? (да/нет) ')
         return confirmation_text in ['да', 'yes']

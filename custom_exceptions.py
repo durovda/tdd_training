@@ -1,4 +1,4 @@
-class PatientIdNotIntegerError(Exception):
+class PatientIdNotIntegerAndPositiveError(Exception):
     def __init__(self):
         super().__init__('Ошибка ввода. ID пациента должно быть числом (целым, положительным)')
 

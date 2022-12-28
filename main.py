@@ -1,5 +1,5 @@
 from application import Application
-from commands import Commands
+from hospital_commands import Commands
 from console import Console
 from dialog_with_user import DialogWithUser
 from hospital import Hospital

@@ -10,6 +10,8 @@ class MockConsole:
         return expected_response
 
     def print(self, message):
+        # todo: Придумать сообщение для этого assert-а
+        assert len(self._expected_messages) > 0
         expected_message = self._get_current_expected_message()
         assert message == expected_message, f'\nactual_output_message = "{message}"' \
                                             f'\nexpected_output_message = "{expected_message}"'
@@ -27,3 +29,6 @@ class MockConsole:
     def _get_current_expected_message(self):
         return self._expected_messages.pop(0)
 
+    def verify_all_calls_have_been_made(self):
+        assert len(self._list_of_expected_requests_and_responses) == 0
+        assert len(self._expected_messages) == 0

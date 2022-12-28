@@ -9,19 +9,19 @@ class Application:
     def main(self):
         stop = False
         while not stop:
-            command = self._dialog_with_user.request_command()
-            if command == CommandType.GET_STATUS:
+            command_type = self._dialog_with_user.request_command()
+            if command_type == CommandType.GET_STATUS:
                 self._commands.get_status()
-            elif command == CommandType.STATUS_UP:
+            elif command_type == CommandType.STATUS_UP:
                 self._commands.status_up()
-            elif command == CommandType.STATUS_DOWN:
+            elif command_type == CommandType.STATUS_DOWN:
                 self._commands.status_down()
-            elif command == CommandType.DISCHARGE:
+            elif command_type == CommandType.DISCHARGE:
                 self._commands.discharge()
-            elif command == CommandType.CALCULATE_STATISTICS:
+            elif command_type == CommandType.CALCULATE_STATISTICS:
                 self._commands.calculate_statistics()
-            elif command == CommandType.STOP:
-                self._commands.stop()
+            elif command_type == CommandType.STOP:
+                self._dialog_with_user.send_message('Сеанс завершён.')
                 stop = True
-            elif command == CommandType.UNKNOWN:
+            elif command_type == CommandType.UNKNOWN:
                 self._dialog_with_user.send_message('Неизвестная команда! Попробуйте ещё раз')
